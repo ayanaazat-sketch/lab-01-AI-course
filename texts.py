@@ -69,9 +69,22 @@ SYSTEM_PROMPT: Dict[str, str] = {
     ),
 }
 
+#: A birthday greeting sent to client.
+CLIENT_CONGRATULATIONS: Dict[str, str] = {
+    "en" : ("Dear [Last Name] [First Name] [Patronymic], happy birthday to you!"
+    ),
+    "ru" : ("Уважаемый(ая) [Фамилия] [Имя] [Отчество], поздравляем вас с днем рождения!"
+        
+    ),
+    "kk" : ("Құрметті [Тегі] [Аты] [Әкесінің аты], сізді туған күніңізбен құттықтаймыз!
+    ),
+    
+}
+
 #: Everything the lab measures, keyed by a short id.
 CORPUS: Dict[str, Dict[str, str]] = {
     "sentence": SENTENCE,
     "complaint": COMPLAINT,
     "system_prompt": SYSTEM_PROMPT,
+    "client_congratulations": CLIENT_CONGRATULATIONS,
 }
