@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "provider": "gemini",
+  "kind": "actual_api",
+  "started_at_utc": "2026-09-20T18:40:49.796690+00:00",
+  "model_id": "gemini-3.6-flash",
+  "sdk_version": "2.24.0",
+  "request_settings": {
+    "max_output_tokens": 4096,
+    "temperature": 1.0,
+    "candidate_count": 1,
+    "thinking": "model_default",
+    "tools": false,
+    "cached_content": null
+  },
+  "request_texts": {
+    "en": {
+      "system_instruction": "You are a support assistant for a retail bank. Answer only from the documents provided. If the answer is not in them, say so. Never invent an account number, a rate or a date.",
+      "user": "Good afternoon. I opened a deposit at your branch in March and was told the rate was fixed for twelve months. In August the rate on my account dropped without any notice. I have attached the contract and the statement. Please explain on what basis the rate was changed and restore the original terms."
+    },
+    "ru": {
+      "system_instruction": "Вы — ассистент поддержки розничного банка. Отвечайте только по предоставленным документам. Если ответа в них нет, так и скажите. Никогда не выдумывайте номер счёта, ставку или дату.",
+      "user": "Добрый день. Я открыл депозит в вашем отделении в марте, и мне сказали, что ставка зафиксирована на двенадцать месяцев. В августе ставка по моему счёту снизилась без какого-либо уведомления. Прилагаю договор и выписку. Прошу объяснить, на каком основании была изменена ставка, и восстановить первоначальные условия."
+    },
+    "kk": {
+      "system_instruction": "Сіз — бөлшек банктің қолдау көрсету ассистентісіз. Тек берілген құжаттар бойынша жауап беріңіз. Егер жауап оларда болмаса, солай деп айтыңыз. Шот нөмірін, мөлшерлемені немесе күнді ешқашан ойдан шығармаңыз.",
+      "user": "Қайырлы күн. Мен наурыз айында сіздің бөлімшеңізде депозит аштым, маған мөлшерлеме он екі айға бекітілген деп айтылды. Тамыз айында менің шотымдағы мөлшерлеме ешқандай хабарламасыз төмендеді. Шартты және үзінді көшірмені қоса тіркеп отырмын. Мөлшерлеме қандай негізде өзгертілгенін түсіндіріп, бастапқы шарттарды қалпына келтіруіңізді сұраймын."
+    }
+  },
+  "token_counts": {
+    "sentence": {
+      "en": 13,
+      "ru": 18,
+      "kk": 31
+    },
+    "complaint": {
+      "en": 60,
+      "ru": 79,
+      "kk": 149
+    },
+    "system_prompt": {
+      "en": 41,
+      "ru": 52,
+      "kk": 88
+    },
+    "client_congratulations": {
+      "en": 20,
+      "ru": 28,
+      "kk": 40
+    },
+    "kk_shared_letters": {
+      "en": 16,
+      "ru": 21,
+      "kk": 19
+    },
+    "kk_specific_letters": {
+      "en": 17,
+      "ru": 17,
+      "kk": 25
+    },
+    "complaint_json": {
+      "en": 78,
+      "ru": 97,
+      "kk": 167
+    }
+  },
+  "request_tokens": {
+    "en": 100,
+    "ru": 130,
+    "kk": 236
+  },
+  "responses": {
+    "en": {
+      "measured_at_utc": "2026-09-20T18:40:59.804329+00:00",
+      "status": "complete",
+      "finish_reason": "STOP",
+      "truncated": false,
+      "answer": "I do not have access to any documents or your account details. Since I can only answer based on provided documents, I am unable to explain why the rate was changed or restore your original terms. Please contact customer support directly or visit a branch so an agent with access to your account can review your contract and statement.",
+      "response_id": "tiiwasflJfXxnsEPjvKWMQ",
+      "model_version": "gemini-3.6-flash",
+      "usage_metadata": {
+        "candidates_token_count": 63,
+        "prompt_token_count": 101,
+        "prompt_tokens_details": [
+          {
+            "modality": "TEXT",
+            "token_count": 101
+          }
+        ],
+        "thoughts_token_count": 398,
+        "total_token_count": 562
+      },
+      "input_tokens": 101,
+      "output_tokens": 461,
+      "candidate_tokens": 63,
+      "thought_tokens": 398
+    },
+    "ru": {
+      "measured_at_utc": "2026-09-20T18:41:06.204187+00:00",
+      "status": "complete",
+      "finish_reason": "STOP",
+      "truncated": false,
+      "answer": "Добрый день! \n\nК сожалению, приложенные вами документы (договор и выписка) недоступны в текущем чате. \n\nЯ могу отвечать на вопросы только на основе предоставленных документов и не имею права выдумывать ставки, даты или номера счетов. Так как текст договора отсутствует, я не могу проверить условия вашего депозита и объяснить причину изменения ставки.\n\nПожалуйста, предоставите текст вашего договора или обратитесь в службу поддержки банка через официальные каналы связи, чтобы специалисты могли изучить ваши документы и помочь в решении вопроса.",
+      "response_id": "vCiwaoOaBLHK_uMP4I-WmAk",
+      "model_version": "gemini-3.6-flash",
+      "usage_metadata": {
+        "candidates_token_count": 120,
+        "prompt_token_count": 131,
+        "prompt_tokens_details": [
+          {
+            "modality": "TEXT",
+            "token_count": 131
+          }
+        ],
+        "thoughts_token_count": 568,
+        "total_token_count": 819
+      },
+      "input_tokens": 131,
+      "output_tokens": 688,
+      "candidate_tokens": 120,
+      "thought_tokens": 568
+    },
+    "kk": {
+      "measured_at_utc": "2026-09-20T18:42:36.522961+00:00",
+      "status": "complete",
+      "finish_reason": "STOP",
+      "truncated": false,
+      "answer": "Қайырлы күн!\n\nӨкінішке орай, сіздің хабарламаңызға тіркелген құжаттар (шарт және үзінді көшірме) маған түскен жоқ. \n\nМен тек ұсынылған құжаттардың мәтіні бойынша ғана жауап бере аламын. Қолда бар құжаттар болмағандықтан, мөлшерлеменің не себепті төмендетілгенін анықтау және оны қалпына келтіру мәселесін қарастыру мүмкін емес.\n\nӨтінішіңізді қарау үшін құжаттардың толық мәтінін ұсынуыңызды немесе банктің жақын орналасқан бөлімшесіне / ресми қолдау қызметіне хабарласуыңызды сұраймын.",
+      "response_id": "FymwapWGFs_GvdIPo_a1kAM",
+      "model_version": "gemini-3.6-flash",
+      "usage_metadata": {
+        "candidates_token_count": 201,
+        "prompt_token_count": 237,
+        "prompt_tokens_details": [
+          {
+            "modality": "TEXT",
+            "token_count": 237
+          }
+        ],
+        "thoughts_token_count": 665,
+        "total_token_count": 1103
+      },
+      "input_tokens": 237,
+      "output_tokens": 866,
+      "candidate_tokens": 201,
+      "thought_tokens": 665
+    }
+  },
+  "retry_history": [
+    {
+      "language": "kk",
+      "previous_result": {
+        "status": "api_error",
+        "error_type": "ServerError"
+      },
+      "retried_at_utc": "2026-09-20T18:42:30.576082+00:00"
+    }
+  ]
+}

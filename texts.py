@@ -1,6 +1,6 @@
-"""Parallel test corpus for Lab 01.
+"""Parallel test corpus for Lab 01, including the three core extensions.
 
-The same three items in English, Russian and Kazakh. Parallel meaning is the
+Each item is in English, Russian and Kazakh. Parallel meaning is the
 point: any difference in token count is a property of the tokenizer, not of
 what is being said.
 
@@ -11,6 +11,7 @@ otherwise the comparison measures translation length instead of tokenization.
 
 from __future__ import annotations
 
+import json
 from typing import Dict
 
 LANGUAGES = ("en", "ru", "kk")
@@ -49,6 +50,29 @@ COMPLAINT: Dict[str, str] = {
     ),
 }
 
+
+# Моё дополнение: поздравление клиента с днём рождения.
+CLIENT_CONGRATULATIONS: Dict[str, str] = {
+    "en": "Dear [Last Name] [First Name] [Patronymic], happy birthday to you!",
+    "ru": "Уважаемый(ая) [Фамилия] [Имя] [Отчество], поздравляем вас с днем рождения!",
+    "kk": "Құрметті [Тегі] [Аты] [Әкесінің аты], сізді туған күніңізбен құттықтаймыз!",
+}
+
+# В первой казахской фразе нет ә ғ қ ң ө ұ ү һ і.
+KK_SHARED_LETTERS: Dict[str, str] = {
+    "en": "The mother bought apples for her child, and the child played ball outside.",
+    "ru": "Мама купила ребёнку яблоки, а ребёнок играл с мячом на улице.",
+    "kk": "Ана баласына алма алды, ал бала далада доппен ойнады.",
+}
+
+# Фразы близки по длине. Смысл внутри каждой тройки EN/RU/KK одинаковый,
+# но между двумя тройками разный: это небольшой пример, а не строгий эксперимент.
+KK_SPECIFIC_LETTERS: Dict[str, str] = {
+    "en": "The grandmother told a story near the house, and the girl watered the flowers.",
+    "ru": "Бабушка рассказывала историю возле дома, а девочка поливала цветы.",
+    "kk": "Әже үйдің қасында әңгіме айтты, қыз гүлдерді суарды.",
+}
+
 #: A system prompt -- the part you resend on every single request.
 SYSTEM_PROMPT: Dict[str, str] = {
     "en": (
@@ -69,22 +93,29 @@ SYSTEM_PROMPT: Dict[str, str] = {
     ),
 }
 
-#: A birthday greeting sent to client.
-CLIENT_CONGRATULATIONS: Dict[str, str] = {
-    "en" : ("Dear [Last Name] [First Name] [Patronymic], happy birthday to you!"
-    ),
-    "ru" : ("Уважаемый(ая) [Фамилия] [Имя] [Отчество], поздравляем вас с днем рождения!"
-        
-    ),
-    "kk" : ("Құрметті [Тегі] [Аты] [Әкесінің аты], сізді туған күніңізбен құттықтаймыз!
-    ),
-    
+
+# Те же пять предложений, но каждое лежит в своём поле JSON.
+# Ключи и формат JSON одинаковые для всех языков; смысл жалобы сохранён целиком.
+def complaint_to_json(text: str) -> str:
+    fields = ("greeting", "deposit", "rate_change", "attachments", "request")
+    sentences = [part + "." for part in text.removesuffix(".").split(". ")]
+    if len(sentences) != len(fields):
+        raise ValueError("В исходной жалобе должно быть ровно пять предложений.")
+    return json.dumps(
+        dict(zip(fields, sentences)), ensure_ascii=False, separators=(",", ":")
+    )
+
+
+COMPLAINT_JSON: Dict[str, str] = {
+    lang: complaint_to_json(COMPLAINT[lang]) for lang in LANGUAGES
 }
 
-#: Everything the lab measures, keyed by a short id.
 CORPUS: Dict[str, Dict[str, str]] = {
     "sentence": SENTENCE,
     "complaint": COMPLAINT,
     "system_prompt": SYSTEM_PROMPT,
     "client_congratulations": CLIENT_CONGRATULATIONS,
+    "kk_shared_letters": KK_SHARED_LETTERS,
+    "kk_specific_letters": KK_SPECIFIC_LETTERS,
+    "complaint_json": COMPLAINT_JSON,
 }
